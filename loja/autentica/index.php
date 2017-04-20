@@ -1,4 +1,5 @@
 <?php
+session_start();
 
 include('../db/index.php');
 
@@ -16,7 +17,8 @@ if(isset($_POST['email']) && isset($_POST['senha'])){
 				str_replace("\\",'',
 				$_POST['senha']))));
 
-	$query = odbc_exec($db, "SELECT idUsuario, tipoPerfil FROM USUARIO
+	$query = odbc_exec($db, "SELECT 
+							nomeUsuario, idUsuario, tipoPerfil FROM USUARIO
 							WHERE 
 							loginUsuario = '$email' 
 							AND
@@ -27,7 +29,12 @@ if(isset($_POST['email']) && isset($_POST['senha'])){
 	//fetch array grava os arquivos carregados do banco em um array
 	
 	if  (!empty($result['idUsuario']) && !empty($result['tipoPerfil'])){
-		echo 'AEHOO';
+		$_SESSION['nomeUsuario'] = $result['nomeUsuario'];
+		$_SESSION['tipoPerfil'] = $result['tipoPerfil'];
+		$_SESSION['idUsuario'] = $result['idUsuario']; 
+		header('Location: ../menu/');
+		
+		
 	}else{
 		$erro = 'Email ou senha incorretos';
 	} 

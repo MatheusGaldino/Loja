@@ -9,8 +9,7 @@
 		<td>Nome</td>
 		<td>Perfil</td>
 		<td>Ativo</td>
-		<td><a href="incluir_usuario.tpl.php">+Incluir novo Usuario</a></td>
-		<td></td>
+		<td colspan="2"><a href="?acao=incluir">+Incluir novo Usuario</a></td>
 	</tr>
 	
 	<?php

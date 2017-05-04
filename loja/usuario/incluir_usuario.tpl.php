@@ -1,8 +1,3 @@
-<?php
-	include('../menu/index.header.tpl.php');
-	include('../menu/index.body.tpl.php');
-?>
-
 <form method="post" action="../usuario">
 	Nome: <input type="text" name="nome"><br>
 	E-mail: <input type="email" name="login"><br>
